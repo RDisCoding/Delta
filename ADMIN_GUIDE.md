@@ -4,7 +4,7 @@
 
 Your website content is managed through **Sanity Studio** - a simple visual editor.
 
-**Admin URL:** `https://your-project.sanity.studio` *(your actual URL will be provided after deployment)*
+**Admin URL:** `https://rsmagri.sanity.studio/`
 
 ---
 

@@ -3,7 +3,7 @@ import { FaExternalLinkAlt, FaLock } from 'react-icons/fa';
 
 export default function AdminPage() {
     // The Sanity Studio URL - you can deploy Sanity Studio to a custom domain
-    const sanityStudioUrl = 'http://localhost:3333'; // Replace with your deployed Sanity Studio URL
+    const sanityStudioUrl = 'https://rsmagri.sanity.studio/';
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-green-900 via-green-800 to-green-900 flex items-center justify-center px-4">
