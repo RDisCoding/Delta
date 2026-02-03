@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaWhatsapp, FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaYoutube } from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaWhatsapp, FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaArrowRight } from 'react-icons/fa';
 
 interface FooterProps {
     settings?: {
@@ -14,7 +14,6 @@ interface FooterProps {
         instagramUrl?: string;
         twitterUrl?: string;
         linkedinUrl?: string;
-        youtubeUrl?: string;
     };
 }
 
@@ -22,8 +21,8 @@ export default function Footer({ settings }: FooterProps) {
     const currentYear = new Date().getFullYear();
 
     const defaultSettings = {
-        companyName: 'AgroPure Commodities',
-        tagline: 'Quality Agricultural Raw Materials',
+        companyName: 'AgroPure',
+        tagline: 'Premium Agricultural Commodities',
         phoneNumber: '+91 98765 43210',
         whatsappNumber: '919876543210',
         email: 'info@agropure.com',
@@ -36,77 +35,82 @@ export default function Footer({ settings }: FooterProps) {
         { name: 'Home', href: '/' },
         { name: 'About Us', href: '/about' },
         { name: 'Products', href: '/products' },
-        { name: 'Contact Us', href: '/contact' },
+        { name: 'Contact', href: '/contact' },
+    ];
+
+    const products = [
+        { name: 'Premium Wheat', href: '/products/wheat' },
+        { name: 'Chickpeas', href: '/products/chana' },
+        { name: 'Pulses', href: '/products/pulses' },
+        { name: 'Rice', href: '/products/rice' },
     ];
 
     return (
-        <footer className="bg-gradient-to-br from-gray-900 via-green-950 to-gray-900 text-white pt-16 sm:pt-20 lg:pt-24 pb-8 relative overflow-hidden">
+        <footer className="relative bg-[#0d0a08] overflow-hidden">
             {/* Decorative elements */}
-            <div className="absolute top-0 left-0 w-96 h-96 bg-green-600/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-yellow-600/10 rounded-full blur-3xl"></div>
+            <div className="absolute top-0 left-0 w-96 h-96 bg-[#d4a853]/5 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#d4a853]/5 rounded-full blur-3xl"></div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-12">
+            {/* Main Footer Content */}
+            <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-20 pb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
 
-                    {/* Company Info */}
+                    {/* Brand */}
                     <div className="lg:col-span-1">
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-xl flex items-center justify-center shadow-lg">
-                                <span className="text-green-800 font-bold text-xl">🌾</span>
+                        <Link href="/" className="flex items-center gap-3 mb-6">
+                            <div className="w-12 h-12 bg-gradient-to-br from-[#d4a853] to-[#c68b2c] rounded-xl flex items-center justify-center">
+                                <span className="text-[#1a1410] text-xl">🌾</span>
                             </div>
-                            <h3 className="text-xl font-bold">{defaultSettings.companyName}</h3>
-                        </div>
-                        <p className="text-gray-400 mb-6 leading-relaxed">
-                            {defaultSettings.tagline}. Your trusted partner for premium quality agricultural raw materials.
+                            <span className="text-2xl font-bold text-[#fef5e7]">{defaultSettings.companyName}</span>
+                        </Link>
+                        <p className="text-[#fef5e7]/60 mb-8 leading-relaxed">
+                            {defaultSettings.tagline}. Your trusted partner for premium quality agricultural raw materials since 1995.
                         </p>
 
                         {/* Social Links */}
                         <div className="flex gap-3">
-                            {defaultSettings.facebookUrl && (
-                                <a href={defaultSettings.facebookUrl} target="_blank" rel="noopener noreferrer"
-                                    className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-green-600 transition-all duration-300 hover:scale-110">
-                                    <FaFacebook className="text-lg" />
+                            {[FaFacebook, FaInstagram, FaTwitter, FaLinkedin].map((Icon, i) => (
+                                <a
+                                    key={i}
+                                    href="#"
+                                    className="w-10 h-10 glass rounded-lg flex items-center justify-center text-[#fef5e7]/60 hover:text-[#d4a853] hover:border-[#d4a853]/50 transition-all"
+                                >
+                                    <Icon className="text-lg" />
                                 </a>
-                            )}
-                            {defaultSettings.instagramUrl && (
-                                <a href={defaultSettings.instagramUrl} target="_blank" rel="noopener noreferrer"
-                                    className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-green-600 transition-all duration-300 hover:scale-110">
-                                    <FaInstagram className="text-lg" />
-                                </a>
-                            )}
-                            {defaultSettings.twitterUrl && (
-                                <a href={defaultSettings.twitterUrl} target="_blank" rel="noopener noreferrer"
-                                    className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-green-600 transition-all duration-300 hover:scale-110">
-                                    <FaTwitter className="text-lg" />
-                                </a>
-                            )}
-                            {defaultSettings.linkedinUrl && (
-                                <a href={defaultSettings.linkedinUrl} target="_blank" rel="noopener noreferrer"
-                                    className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-green-600 transition-all duration-300 hover:scale-110">
-                                    <FaLinkedin className="text-lg" />
-                                </a>
-                            )}
-                            {defaultSettings.youtubeUrl && (
-                                <a href={defaultSettings.youtubeUrl} target="_blank" rel="noopener noreferrer"
-                                    className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-green-600 transition-all duration-300 hover:scale-110">
-                                    <FaYoutube className="text-lg" />
-                                </a>
-                            )}
+                            ))}
                         </div>
                     </div>
 
                     {/* Quick Links */}
                     <div>
-                        <h4 className="text-lg font-bold mb-6 text-white">Quick Links</h4>
-                        <ul className="space-y-3">
+                        <h4 className="text-lg font-bold text-[#fef5e7] mb-6">Quick Links</h4>
+                        <ul className="space-y-4">
                             {quickLinks.map((link) => (
                                 <li key={link.name}>
                                     <Link
                                         href={link.href}
-                                        className="text-gray-400 hover:text-green-400 transition-colors duration-300 flex items-center gap-2 group"
+                                        className="group flex items-center gap-2 text-[#fef5e7]/60 hover:text-[#d4a853] transition-colors"
                                     >
-                                        <span className="w-1.5 h-1.5 bg-green-500 rounded-full group-hover:scale-150 transition-transform"></span>
-                                        {link.name}
+                                        <FaArrowRight className="text-xs opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                                        <span>{link.name}</span>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Products */}
+                    <div>
+                        <h4 className="text-lg font-bold text-[#fef5e7] mb-6">Products</h4>
+                        <ul className="space-y-4">
+                            {products.map((link) => (
+                                <li key={link.name}>
+                                    <Link
+                                        href={link.href}
+                                        className="group flex items-center gap-2 text-[#fef5e7]/60 hover:text-[#d4a853] transition-colors"
+                                    >
+                                        <FaArrowRight className="text-xs opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                                        <span>{link.name}</span>
                                     </Link>
                                 </li>
                             ))}
@@ -115,83 +119,68 @@ export default function Footer({ settings }: FooterProps) {
 
                     {/* Contact Info */}
                     <div>
-                        <h4 className="text-lg font-bold mb-6 text-white">Contact Us</h4>
+                        <h4 className="text-lg font-bold text-[#fef5e7] mb-6">Contact Us</h4>
                         <ul className="space-y-4">
-                            <li className="flex items-start gap-3 group">
-                                <div className="w-10 h-10 bg-green-600/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-green-600 transition-colors">
-                                    <FaPhone className="text-green-400 group-hover:text-white" />
-                                </div>
-                                <div>
-                                    <p className="text-sm text-gray-500">Phone</p>
-                                    <a href={`tel:${defaultSettings.phoneNumber}`} className="text-white hover:text-green-400 transition-colors">
-                                        {defaultSettings.phoneNumber}
-                                    </a>
-                                </div>
+                            <li>
+                                <a
+                                    href={`https://wa.me/${defaultSettings.whatsappNumber}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-start gap-3 group text-[#fef5e7]/60 hover:text-[#d4a853] transition-colors"
+                                >
+                                    <FaWhatsapp className="text-lg mt-0.5 text-green-500" />
+                                    <span>WhatsApp Us</span>
+                                </a>
                             </li>
-                            <li className="flex items-start gap-3 group">
-                                <div className="w-10 h-10 bg-green-600/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-green-600 transition-colors">
-                                    <FaWhatsapp className="text-green-400 group-hover:text-white" />
-                                </div>
-                                <div>
-                                    <p className="text-sm text-gray-500">WhatsApp</p>
-                                    <a href={`https://wa.me/${defaultSettings.whatsappNumber}`} target="_blank" rel="noopener noreferrer"
-                                        className="text-white hover:text-green-400 transition-colors">
-                                        Chat with us
-                                    </a>
-                                </div>
+                            <li>
+                                <a
+                                    href={`tel:${defaultSettings.phoneNumber}`}
+                                    className="flex items-start gap-3 group text-[#fef5e7]/60 hover:text-[#d4a853] transition-colors"
+                                >
+                                    <FaPhone className="text-lg mt-0.5" />
+                                    <span>{defaultSettings.phoneNumber}</span>
+                                </a>
                             </li>
-                            <li className="flex items-start gap-3 group">
-                                <div className="w-10 h-10 bg-green-600/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-green-600 transition-colors">
-                                    <FaEnvelope className="text-green-400 group-hover:text-white" />
-                                </div>
-                                <div>
-                                    <p className="text-sm text-gray-500">Email</p>
-                                    <a href={`mailto:${defaultSettings.email}`} className="text-white hover:text-green-400 transition-colors">
-                                        {defaultSettings.email}
-                                    </a>
-                                </div>
+                            <li>
+                                <a
+                                    href={`mailto:${defaultSettings.email}`}
+                                    className="flex items-start gap-3 group text-[#fef5e7]/60 hover:text-[#d4a853] transition-colors"
+                                >
+                                    <FaEnvelope className="text-lg mt-0.5" />
+                                    <span>{defaultSettings.email}</span>
+                                </a>
                             </li>
-                        </ul>
-                    </div>
-
-                    {/* Address & Timings */}
-                    <div>
-                        <h4 className="text-lg font-bold mb-6 text-white">Visit Us</h4>
-                        <ul className="space-y-4">
-                            <li className="flex items-start gap-3 group">
-                                <div className="w-10 h-10 bg-green-600/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-green-600 transition-colors">
-                                    <FaMapMarkerAlt className="text-green-400 group-hover:text-white" />
-                                </div>
-                                <div>
-                                    <p className="text-sm text-gray-500">Address</p>
-                                    <p className="text-white whitespace-pre-line">{defaultSettings.address}</p>
-                                </div>
-                            </li>
-                            <li className="flex items-start gap-3 group">
-                                <div className="w-10 h-10 bg-green-600/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-green-600 transition-colors">
-                                    <FaClock className="text-green-400 group-hover:text-white" />
-                                </div>
-                                <div>
-                                    <p className="text-sm text-gray-500">Business Hours</p>
-                                    <p className="text-white">{defaultSettings.timings}</p>
-                                </div>
+                            <li className="flex items-start gap-3 text-[#fef5e7]/60">
+                                <FaMapMarkerAlt className="text-lg mt-0.5 flex-shrink-0" />
+                                <span className="whitespace-pre-line">{defaultSettings.address}</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
+                {/* Divider */}
+                <div className="decorative-line my-12"></div>
+
                 {/* Bottom Bar */}
-                <div className="border-t border-green-800/50 pt-8">
-                    <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-                        <p className="text-gray-500 text-sm text-center sm:text-left">
-                            © {currentYear} {defaultSettings.companyName}. All rights reserved.
-                        </p>
-                        <div className="flex gap-6">
-                            <Link href="/contact" className="text-gray-500 hover:text-green-400 text-sm transition-colors">
-                                Contact Us
-                            </Link>
-                        </div>
+                <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <p className="text-[#fef5e7]/40 text-sm">
+                        © {currentYear} {defaultSettings.companyName}. All rights reserved.
+                    </p>
+                    <div className="flex items-center gap-6 text-sm">
+                        <Link href="/contact" className="text-[#fef5e7]/40 hover:text-[#d4a853] transition-colors">
+                            Privacy Policy
+                        </Link>
+                        <Link href="/contact" className="text-[#fef5e7]/40 hover:text-[#d4a853] transition-colors">
+                            Terms of Service
+                        </Link>
                     </div>
+                </div>
+            </div>
+
+            {/* Large decorative text */}
+            <div className="absolute bottom-0 left-0 right-0 overflow-hidden pointer-events-none">
+                <div className="text-[20vw] font-black text-[#fef5e7]/[0.02] leading-none text-center whitespace-nowrap">
+                    AGROPURE
                 </div>
             </div>
         </footer>
