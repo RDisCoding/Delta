@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'AgroPure Commodities',
 
-  projectId: '35ik4q2e',
+  projectId: 'hj4bv868',
   dataset: 'production',
 
   plugins: [structureTool(), visionTool()],
