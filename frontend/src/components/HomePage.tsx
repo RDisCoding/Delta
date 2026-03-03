@@ -3,7 +3,7 @@
 import { urlFor } from '../sanity/imageUrl';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaStar, FaWhatsapp, FaPhone, FaArrowRight, FaLeaf, FaTruck, FaHandshake, FaAward, FaQuoteLeft } from 'react-icons/fa';
+import { FaWhatsapp, FaPhone, FaArrowRight, FaLeaf, FaTruck, FaHandshake, FaAward } from 'react-icons/fa';
 import FloatingActions from './FloatingActions';
 import Footer from './Footer';
 import { useEffect, useRef, useState } from 'react';
@@ -82,12 +82,11 @@ interface HomePageProps {
     hero?: any;
     about?: any;
     categories?: any[];
-    reviews?: any[];
     faqs?: any[];
 }
 
 export default function HomePage({
-    settings, hero, about, categories, reviews, faqs
+    settings, hero, about, categories, faqs
 }: HomePageProps) {
     useScrollReveal();
 
@@ -126,13 +125,6 @@ export default function HomePage({
         { _id: '4', name: 'Basmati Rice', slug: { current: 'rice' }, description: 'Aromatic long-grain rice' },
         { _id: '5', name: 'Spices', slug: { current: 'spices' }, description: 'Turmeric, Cumin, Coriander' },
         { _id: '6', name: 'Oilseeds', slug: { current: 'oilseeds' }, description: 'Groundnut, Mustard, Sesame' },
-    ];
-
-    const demoReviews = reviews?.length ? reviews : [
-        { _id: '1', clientName: 'Rajesh Kumar', company: 'Kumar Traders', rating: 5, reviewText: 'Exceptional quality and reliable service. The best supplier we have worked with in 15 years.' },
-        { _id: '2', clientName: 'Priya Sharma', company: 'Sharma Foods', rating: 5, reviewText: 'Outstanding wheat quality. Their commitment to excellence is unmatched in the industry.' },
-        { _id: '3', clientName: 'Mohammed Ali', company: 'Ali Enterprises', rating: 5, reviewText: 'Professional team, premium products. Highly recommend for bulk agricultural supplies.' },
-        { _id: '4', clientName: 'Anita Patel', company: 'Patel Exports', rating: 5, reviewText: 'Consistent quality every single time. True partners in our success.' },
     ];
 
     const features = [
@@ -367,55 +359,6 @@ export default function HomePage({
                                 </Link>
                             );
                         })}
-                    </div>
-                </div>
-            </section>
-
-            {/* ===== TESTIMONIALS SECTION ===== */}
-            <section className="py-24 sm:py-32 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-b from-[#0d0a08] via-[#1a1410] to-[#0d0a08]"></div>
-
-                <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-                    {/* Section header */}
-                    <div className="text-center mb-16">
-                        <span className="text-[#d4a853] text-sm font-semibold uppercase tracking-widest reveal">
-                            Testimonials
-                        </span>
-                        <h2 className="text-headline text-[#fef5e7] mt-4 reveal" style={{ animationDelay: '0.1s' }}>
-                            Trusted by Leaders
-                        </h2>
-                    </div>
-
-                    {/* Testimonials Grid */}
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {demoReviews.map((review, i) => (
-                            <div
-                                key={review._id}
-                                className="glass p-8 rounded-2xl card-premium reveal flex flex-col h-full"
-                                style={{ animationDelay: `${0.2 + i * 0.1}s` }}
-                            >
-                                <div className="flex gap-1 mb-4">
-                                    {[...Array(5)].map((_, j) => (
-                                        <FaStar key={j} className="text-[#d4a853]" />
-                                    ))}
-                                </div>
-                                <FaQuoteLeft className="text-3xl text-[#d4a853]/30 mb-4" />
-                                <p className="text-[#fef5e7] text-lg mb-6 leading-relaxed flex-grow">
-                                    &ldquo;{review.reviewText}&rdquo;
-                                </p>
-                                <div className="flex items-center gap-4 mt-auto pt-4 border-t border-[#d4a853]/10">
-                                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#d4a853] to-[#c68b2c] flex items-center justify-center flex-shrink-0">
-                                        <span className="text-[#1a1410] font-bold text-lg">
-                                            {review.clientName.charAt(0)}
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <p className="font-bold text-[#fef5e7]">{review.clientName}</p>
-                                        <p className="text-[#d4a853] text-sm">{review.company}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
                     </div>
                 </div>
             </section>

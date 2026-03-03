@@ -12,6 +12,20 @@ export default defineType({
             initialValue: 'About Us',
         }),
         defineField({
+            name: 'heroTitle',
+            title: 'Hero Title',
+            type: 'string',
+            description: 'Main title displayed in the About Us hero banner',
+            initialValue: 'Our Story of Excellence',
+        }),
+        defineField({
+            name: 'heroSubtitle',
+            title: 'Hero Subtitle',
+            type: 'string',
+            description: 'Subtitle text below the hero title',
+            initialValue: 'Building trust and delivering quality, one grain at a time',
+        }),
+        defineField({
             name: 'heading',
             title: 'Heading',
             type: 'string',
@@ -23,6 +37,25 @@ export default defineType({
             type: 'text',
             rows: 6,
             validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+            name: 'additionalDescription',
+            title: 'Additional Description',
+            type: 'text',
+            rows: 4,
+            description: 'Second paragraph shown below the main description',
+        }),
+        defineField({
+            name: 'gstin',
+            title: 'GSTIN',
+            type: 'string',
+            description: 'Company GSTIN number',
+        }),
+        defineField({
+            name: 'registrationInfo',
+            title: 'Registration Info',
+            type: 'string',
+            description: 'e.g. FSSAI Licensed, ISO Certified, etc.',
         }),
         defineField({
             name: 'image',

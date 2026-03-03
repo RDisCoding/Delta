@@ -9,7 +9,6 @@ const getData = async () => {
     "hero": *[_type == "heroSection"][0],
     "about": *[_type == "aboutSection"][0],
     "categories": *[_type == "productCategory"] | order(order asc),
-    "reviews": *[_type == "review"] | order(order asc),
     "faqs": *[_type == "faq"] | order(order asc)
   }`;
 
@@ -17,7 +16,7 @@ const getData = async () => {
 };
 
 export default async function Home() {
-  const { settings, hero, about, categories, reviews, faqs } = await getData();
+  const { settings, hero, about, categories, faqs } = await getData();
 
   return (
     <HomePage 
@@ -25,7 +24,6 @@ export default async function Home() {
       hero={hero}
       about={about}
       categories={categories}
-      reviews={reviews}
       faqs={faqs}
     />
   );

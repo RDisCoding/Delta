@@ -13,7 +13,7 @@ async function getSiteSettings() {
     tagline,
     logo
   }`;
-  return client.fetch(query, {}, { next: { revalidate: 60 } });
+  return client.fetch(query, {}, { cache: 'no-store' });
 }
 
 export async function generateMetadata(): Promise<Metadata> {

@@ -93,8 +93,11 @@ export default function AboutPage({ settings, about }: AboutPageProps) {
     };
 
     const defaultAbout = {
+        heroTitle: about?.heroTitle || 'Our Story of Excellence',
+        heroSubtitle: about?.heroSubtitle || 'Building trust and delivering quality, one grain at a time',
         heading: about?.heading || 'Your Trusted Partner for Premium Agricultural Raw Materials',
         description: about?.description || 'With decades of experience in the agricultural commodities market, we have established ourselves as a reliable supplier of high-quality raw materials.',
+        additionalDescription: about?.additionalDescription || 'We work directly with farmers and agricultural cooperatives to source the finest grains, pulses, and seeds. Our rigorous quality control ensures that every product meets the highest standards.',
         stats: about?.stats || [
             { value: '25+', label: 'Years Experience' },
             { value: '500+', label: 'Happy Clients' },
@@ -104,6 +107,8 @@ export default function AboutPage({ settings, about }: AboutPageProps) {
         mission: about?.mission || 'To be the most trusted supplier of agricultural raw materials, ensuring quality, consistency, and fair pricing for all our partners.',
         vision: about?.vision || 'To revolutionize the agricultural supply chain by creating lasting partnerships and delivering excellence in every grain.',
         values: about?.values || ['Quality First', 'Transparency', 'Customer Satisfaction', 'Integrity', 'Reliability'],
+        gstin: about?.gstin || '',
+        registrationInfo: about?.registrationInfo || '',
     };
 
     const features = [
@@ -125,10 +130,10 @@ export default function AboutPage({ settings, about }: AboutPageProps) {
                 <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
                     <span className="text-[#d4a853] text-sm font-semibold uppercase tracking-widest reveal">About Us</span>
                     <h1 className="text-headline text-[#fef5e7] mt-4 mb-6 reveal" style={{ animationDelay: '0.1s' }}>
-                        Our Story of<br /><span className="text-gradient-gold">Excellence</span>
+                        {defaultAbout.heroTitle}
                     </h1>
                     <p className="text-xl text-[#fef5e7]/70 max-w-2xl mx-auto reveal" style={{ animationDelay: '0.2s' }}>
-                        Building trust and delivering quality, one grain at a time
+                        {defaultAbout.heroSubtitle}
                     </p>
                 </div>
             </section>
@@ -156,22 +161,29 @@ export default function AboutPage({ settings, about }: AboutPageProps) {
                     <div className="glass p-8 sm:p-12 rounded-3xl reveal">
                         <h2 className="text-title text-[#fef5e7] mb-6">{defaultAbout.heading}</h2>
                         <p className="text-lg text-[#fef5e7]/70 leading-relaxed mb-6">{defaultAbout.description}</p>
-                        <p className="text-lg text-[#fef5e7]/70 leading-relaxed mb-8">
-                            We work directly with farmers and agricultural cooperatives to source the finest grains, pulses, and seeds.
-                            Our rigorous quality control ensures that every product meets the highest standards.
-                        </p>
+                        {defaultAbout.additionalDescription && (
+                            <p className="text-lg text-[#fef5e7]/70 leading-relaxed mb-8">
+                                {defaultAbout.additionalDescription}
+                            </p>
+                        )}
 
                         {/* Company Details */}
-                        <div className="pt-6 border-t border-[#d4a853]/20 grid sm:grid-cols-2 gap-6">
-                            <div>
-                                <span className="text-sm font-semibold text-[#d4a853] uppercase tracking-wider">GSTIN</span>
-                                <p className="text-xl text-[#fef5e7] font-bold mt-1">24XXXXXXXX1A1ZZ</p>
+                        {(defaultAbout.gstin || defaultAbout.registrationInfo) && (
+                            <div className="pt-6 border-t border-[#d4a853]/20 grid sm:grid-cols-2 gap-6">
+                                {defaultAbout.gstin && (
+                                    <div>
+                                        <span className="text-sm font-semibold text-[#d4a853] uppercase tracking-wider">GSTIN</span>
+                                        <p className="text-xl text-[#fef5e7] font-bold mt-1">{defaultAbout.gstin}</p>
+                                    </div>
+                                )}
+                                {defaultAbout.registrationInfo && (
+                                    <div>
+                                        <span className="text-sm font-semibold text-[#d4a853] uppercase tracking-wider">Registration</span>
+                                        <p className="text-xl text-[#fef5e7] font-bold mt-1">{defaultAbout.registrationInfo}</p>
+                                    </div>
+                                )}
                             </div>
-                            <div>
-                                <span className="text-sm font-semibold text-[#d4a853] uppercase tracking-wider">Registration</span>
-                                <p className="text-xl text-[#fef5e7] font-bold mt-1">FSSAI Licensed</p>
-                            </div>
-                        </div>
+                        )}
                     </div>
                 </div>
             </section>

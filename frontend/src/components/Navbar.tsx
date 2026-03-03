@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { HiMenu, HiX } from 'react-icons/hi';
 import { FaWhatsapp, FaPhone } from 'react-icons/fa';
@@ -75,8 +76,12 @@ export default function Navbar({ companyName = 'AgroPure', logo, whatsapp = '919
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#d4a853] to-[#c68b2c] rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
-                <span className="text-[#1a1410] text-xl sm:text-2xl">🌾</span>
+              <div className="relative w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#d4a853] to-[#c68b2c] rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+                {logo ? (
+                  <Image src={logo} alt={companyName} fill className="object-contain p-1" />
+                ) : (
+                  <span className="text-[#1a1410] text-xl sm:text-2xl">🌾</span>
+                )}
               </div>
               <span className="text-xl sm:text-2xl font-bold text-[#fef5e7] tracking-tight group-hover:text-[#d4a853] transition-colors">
                 {companyName}
@@ -149,8 +154,12 @@ export default function Navbar({ companyName = 'AgroPure', logo, whatsapp = '919
           {/* Logo Header */}
           <div className="pt-8 pb-6 px-8 border-b border-[#d4a853]/10">
             <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-[#d4a853] to-[#c68b2c] rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-[#1a1410] text-2xl">🌾</span>
+              <div className="w-12 h-12 bg-gradient-to-br from-[#d4a853] to-[#c68b2c] rounded-xl flex items-center justify-center shadow-lg overflow-hidden relative">
+                {logo ? (
+                  <Image src={logo} alt={companyName} fill className="object-contain p-1" />
+                ) : (
+                  <span className="text-[#1a1410] text-2xl">🌾</span>
+                )}
               </div>
               <div>
                 <span className="text-xl font-bold text-[#fef5e7] block">{companyName}</span>
