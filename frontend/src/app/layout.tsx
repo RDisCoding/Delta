@@ -11,7 +11,8 @@ async function getSiteSettings() {
   const query = groq`*[_type == "siteSettings"][0]{
     companyName,
     tagline,
-    logo
+    logo,
+    favicon
   }`;
   return client.fetch(query, {}, { cache: 'no-store' });
 }
@@ -38,10 +39,16 @@ export default async function RootLayout({
 }) {
   const settings = await getSiteSettings();
   const logoUrl = settings?.logo ? urlFor(settings.logo).url() : undefined;
+  const faviconUrl = settings?.favicon
+    ? urlFor(settings.favicon).width(64).url()
+    : settings?.logo
+    ? urlFor(settings.logo).width(64).url()
+    : undefined;
 
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        {faviconUrl && <link rel="icon" href={faviconUrl} />}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />

@@ -76,9 +76,9 @@ export default function Navbar({ companyName = 'AgroPure', logo, whatsapp = '919
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#d4a853] to-[#c68b2c] rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+              <div className={`relative w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300 overflow-hidden ${logo ? '' : 'bg-gradient-to-br from-[#d4a853] to-[#c68b2c]'}`}>
                 {logo ? (
-                  <Image src={logo} alt={companyName} fill className="object-contain p-1" />
+                  <Image src={logo} alt={companyName} fill className="object-contain" />
                 ) : (
                   <span className="text-[#1a1410] text-xl sm:text-2xl">🌾</span>
                 )}
@@ -154,9 +154,9 @@ export default function Navbar({ companyName = 'AgroPure', logo, whatsapp = '919
           {/* Logo Header */}
           <div className="pt-8 pb-6 px-8 border-b border-[#d4a853]/10">
             <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-gradient-to-br from-[#d4a853] to-[#c68b2c] rounded-xl flex items-center justify-center shadow-lg overflow-hidden relative">
+              <div className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-lg overflow-hidden relative ${logo ? '' : 'bg-gradient-to-br from-[#d4a853] to-[#c68b2c]'}`}>
                 {logo ? (
-                  <Image src={logo} alt={companyName} fill className="object-contain p-1" />
+                  <Image src={logo} alt={companyName} fill className="object-contain" />
                 ) : (
                   <span className="text-[#1a1410] text-2xl">🌾</span>
                 )}
