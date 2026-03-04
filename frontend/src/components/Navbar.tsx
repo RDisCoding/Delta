@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { HiMenu, HiX } from 'react-icons/hi';
-import { FaWhatsapp, FaPhone } from 'react-icons/fa';
 
 interface NavbarProps {
   companyName?: string;
@@ -184,29 +183,8 @@ export default function Navbar({ companyName = 'AgroPure', logo, whatsapp = '919
             ))}
           </div>
 
-          {/* Quick Contact Section */}
-          <div className="px-6 py-6 border-t border-[#d4a853]/10 space-y-3">
-            <p className="text-xs text-[#fef5e7]/40 uppercase tracking-wider mb-3 px-2">Quick Contact</p>
-            <a
-              href={`https://wa.me/${whatsapp}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 px-4 py-3 bg-green-600/20 border border-green-500/30 rounded-xl text-green-400 hover:bg-green-600/30 transition-colors"
-            >
-              <FaWhatsapp className="text-xl" />
-              <span className="font-medium">Chat on WhatsApp</span>
-            </a>
-            <a
-              href={`tel:${phone}`}
-              className="flex items-center gap-3 px-4 py-3 bg-[#d4a853]/10 border border-[#d4a853]/20 rounded-xl text-[#d4a853] hover:bg-[#d4a853]/20 transition-colors"
-            >
-              <FaPhone className="text-lg" />
-              <span className="font-medium">{phone}</span>
-            </a>
-          </div>
-
           {/* CTA Button */}
-          <div className="p-6 pt-0">
+          <div className="px-6 pb-6 pt-4 border-t border-[#d4a853]/10">
             <Link
               href="/contact"
               onClick={() => setIsOpen(false)}
